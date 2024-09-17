@@ -24,11 +24,13 @@ export const useFetch = <T>(url: URL): ApiDTO<T | undefined> => {
         signal: abortController.signal
       });
 
-      const { results: data } = await res.json();
+      const json_res = await res.json();
+
+      const data = json_res?.results ? json_res.results : json_res;
 
       setState(prevState => ({
         ...prevState,
-        data: data,
+        data,
         isLoading: false
       }));
 
