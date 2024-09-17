@@ -6,7 +6,7 @@ import { useAtom } from 'jotai';
 import { queryAtom } from '../../atoms';
 
 export const HeaderSearchBar = () => {
-  const [_, setQuery] = useAtom(queryAtom);
+  const [, setQuery] = useAtom(queryAtom);
 
   const handleChange = useCallback(
     _debounce((event: ChangeEvent<HTMLInputElement>) => {

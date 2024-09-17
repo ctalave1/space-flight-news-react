@@ -6,7 +6,7 @@ interface ApiDTO<T> {
   error: Error | undefined;
 };
 
-export const useFetch = <T extends any>(url: URL): ApiDTO<T | undefined> => {
+export const useFetch = <T>(url: URL): ApiDTO<T | undefined> => {
   const [state, setState] = useState<ApiDTO<T | undefined>>({ 
     data: undefined,
     isLoading: true,
@@ -24,13 +24,14 @@ export const useFetch = <T extends any>(url: URL): ApiDTO<T | undefined> => {
         signal: abortController.signal
       });
 
-      const data = await res.json();
+      const { results: data } = await res.json();
 
       setState(prevState => ({
         ...prevState,
-        data,
+        data: data,
         isLoading: false
       }));
+
     } catch (e: unknown) {
       setState(prevState => ({
         ...prevState,
@@ -51,6 +52,7 @@ export const useFetch = <T extends any>(url: URL): ApiDTO<T | undefined> => {
 
     return () => abortController.abort();
   }, [url.toString()]);
+
 
   return state;
 };
