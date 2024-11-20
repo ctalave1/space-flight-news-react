@@ -28,7 +28,7 @@ export const HomePage = () => {
   return (
     <div className="container mx-auto">
       {isLoading ? (
-        <RocketLaunchIcon className="mx-auto my-12 h-12 w-12 text-gray=400 animate-bounce" />
+        <RocketLaunchIcon className="mx-auto my-12 h-12 w-12 text-gray-400 animate-bounce" />
       ) : (
         <div className="grid grid-cols-1 gap-4 px-4 md:grid-cols-2 xl:grid cols-3">
           {Array.isArray(articles) &&

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface ApiDTO<T> {
   data: T | undefined;
@@ -13,7 +13,7 @@ export const useFetch = <T>(url: URL): ApiDTO<T | undefined> => {
     error: undefined
   });
 
-  const fetchData = async (abortController: AbortController) => {
+  const fetchData = useCallback(async (abortController: AbortController) => {
     try {
       setState(prevState => ({
         ...prevState,
@@ -45,7 +45,7 @@ export const useFetch = <T>(url: URL): ApiDTO<T | undefined> => {
           : new Error('Unknown error'), 
       }));
     }
-  };
+  }, [url]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -53,7 +53,7 @@ export const useFetch = <T>(url: URL): ApiDTO<T | undefined> => {
     fetchData(abortController);
 
     return () => abortController.abort();
-  }, [url.toString()]);
+  }, [url, fetchData]);
 
 
   return state;
