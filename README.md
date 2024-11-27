@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Space Flight News React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A project I worked on as a learning exercise to brush up on my skills with React and Typescript.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[See Project Live](https://space-flight-news-react-vert.vercel.app/)
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Setup Instructions](#setup-instructions)
+- [How to Run Locally](#how-to-run-locally)
+- [How to Build for Deployment](#how-to-build-for-deployment)
 
-- Configure the top-level `parserOptions` property like this:
+## Overview
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+A project that I worked on to brush up on my skills with React and to see how to setup a project using React with Vite.
+
+I followed along with this [Medium article](https://javascript.plainenglish.io/building-a-lightning-fast-spa-with-vite-and-react-8acb23a320a4) to start off, but also added TypeScript to the project myself so that I could get some practice with that, as well. The project also makes use of Tailwind CSS for simpler styling and responsiveness.
+
+This project displays links to article thumbnails gotten from the [Spaceflight News API](https://www.spaceflightnewsapi.net/) and then allows a user to click on one of those thumbnails to be taken to a page for that particular article. It also has a search bar to filter for articles on a specific keyword that the user inputs.
+
+The project is also responsive, adjusting to screen size changes.
+
+### Prerequisites
+
+```bash
+Install Node.js
+https://nodejs.org/
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Setup Instructions
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clone the repository to your local machine
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies
+
+```bash
+npm install
+```
+
+### How to Run Locally
+
+```bash
+npm run dev
+```
+
+### How to Build for Deployment
+
+```bash
+npm run build
 ```
